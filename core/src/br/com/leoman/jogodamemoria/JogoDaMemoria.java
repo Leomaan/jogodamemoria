@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.util.ArrayList;
 
 
 public class JogoDaMemoria extends ApplicationAdapter {
@@ -21,9 +22,10 @@ public class JogoDaMemoria extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-
-		fimDeJogoTexto = criarTexto(1, Color.RED);
+		criarCarta();
+		//fimDeJogoTexto = criarTexto(20, Color.RED);
 	}
+
 
 	private BitmapFont criarTexto(int tamanho, Color cor) {
 		BitmapFont fonte;
@@ -39,12 +41,29 @@ public class JogoDaMemoria extends ApplicationAdapter {
 	@Override
 	public void render () {  //Vendo e aplicando as mudanças
 		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.end();
+		stage.draw();
 	}
 
 	@Override
 	public void dispose () {  //Liberando memoria
 		batch.dispose();
+	}
+
+	private void criarCarta() {
+		ArrayList<Integer>numeroCartas = new ArrayList<Integer>();
+		for(int i = 1;i<=6;i++){
+			numeroCartas.add(i);
+			numeroCartas.add(i);
+		}
+
+		for(int i = 1, x = 50; i<=6; i++, x+=210){
+			Carta carta = new Carta(i, x, Gdx.graphics.getHeight()-300);
+			stage.addActor(carta);
+		}
+		for(int i = 1, x = 50; i<=6; i++, x+=210){
+			Carta carta = new Carta(i, x, Gdx.graphics.getHeight()-650);
+			stage.addActor(carta);
+		}
+
 	}
 }
