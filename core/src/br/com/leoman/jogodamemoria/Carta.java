@@ -1,8 +1,6 @@
 package br.com.leoman.jogodamemoria;
 
 
-import br.com.leoman.jogodamemoria.Decorator.CartaDecorator;
-import br.com.leoman.jogodamemoria.Decorator.CartaSom;
 import com.badlogic.gdx.Gdx;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -38,15 +36,13 @@ public class Carta extends Actor {
             if(cartasViradas.size() <2){
                virada = true;
                jogo.cartasViradas.add(cartaAtual);
-                  CartaDecorator decorator = new CartaSom(cartaAtual);
-                  decorator.tocarSom();
+
 
             }else if(cartasViradas.size() >=2){
                    jogo.virarCartas();
                    virada = true;
                    jogo.cartasViradas.add(cartaAtual);
-                     CartaDecorator decorator = new CartaSom(cartaAtual);
-                     decorator.tocarSom();
+
 
             }
             return super.touchDown(event, x, y, pointer, button);
