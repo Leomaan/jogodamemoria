@@ -1,6 +1,9 @@
 package br.com.leoman.jogodamemoria;
 
 
+import br.com.leoman.jogodamemoria.Decorator.CartaAnimacao;
+import br.com.leoman.jogodamemoria.Decorator.CartaDecorator;
+import br.com.leoman.jogodamemoria.Decorator.CartaSom;
 import com.badlogic.gdx.Gdx;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -36,14 +39,19 @@ public class Carta extends Actor {
             if(cartasViradas.size() <2){
                virada = true;
                jogo.cartasViradas.add(cartaAtual);
-
+               CartaDecorator som = new CartaSom(cartaAtual);
+               som.executar();
+               CartaDecorator animacao = new CartaAnimacao(cartaAtual);
+               animacao.executar();
 
             }else if(cartasViradas.size() >=2){
                    jogo.virarCartas();
                    virada = true;
                    jogo.cartasViradas.add(cartaAtual);
-
-
+                  CartaDecorator som = new CartaSom(cartaAtual);
+                  som.executar();
+                  CartaDecorator animacao = new CartaAnimacao(cartaAtual);
+                  animacao.executar();
             }
             return super.touchDown(event, x, y, pointer, button);
          }
@@ -52,6 +60,8 @@ public class Carta extends Actor {
    }
 
       public void draw(Batch batch, float delta){
-      batch.draw(!virada ? texturaVerso : texturaFrente, x, y, largura, altura);
+         batch.draw(
+                 !virada ? texturaVerso : texturaFrente, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation(), 0, 0, (int) largura, (int) altura, false, false
+         );
       }
 }
