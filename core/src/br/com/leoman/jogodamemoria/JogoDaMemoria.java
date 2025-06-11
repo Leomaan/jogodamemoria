@@ -27,7 +27,7 @@ public class JogoDaMemoria extends Game {
 	Cronometro cronometro;
 
 	@Override
-	public void create () { //Objetos que precisamos interagir durante o jogo
+	public void create () {
 		batch = new SpriteBatch();
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
@@ -52,8 +52,9 @@ public class JogoDaMemoria extends Game {
 	}
 
 	@Override
-	public void render () {  //Vendo e aplicando as mudanças
+	public void render () {
 		ScreenUtils.clear(0.8f, 0.8f, 0.8f, 0.8f);
+		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 		delayCarta();
 		removerCartasIguais();
@@ -65,7 +66,7 @@ public class JogoDaMemoria extends Game {
 	}
 
 	private void reiniciarJogo() {
-		stage.clear(); // Remove tudo
+		stage.clear();
 		cartasViradas.clear();
 		cartasIguais.clear();
 		cronometro.reiniciar();
@@ -74,7 +75,7 @@ public class JogoDaMemoria extends Game {
 
 
 	@Override
-	public void dispose () {  //Liberando memoria
+	public void dispose () {
 		batch.dispose();
 		stage.dispose();
 	}

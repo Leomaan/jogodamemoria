@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Carta extends Actor {
    Texture texturaFrente;
    Texture texturaVerso;
-   boolean virada = false; //Conteudo da carta
+   boolean virada = false;
    float x;
    float y;
    float largura = 190;
@@ -59,9 +59,18 @@ public class Carta extends Actor {
 
    }
 
-      public void draw(Batch batch, float delta){
-         batch.draw(
-                 !virada ? texturaVerso : texturaFrente, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation(), 0, 0, (int) largura, (int) altura, false, false
-         );
+      public void draw(Batch batch, float parentAlpha) {
+          Texture textura = virada ? texturaFrente : texturaVerso;
+          batch.draw(
+                  textura,
+                  getX(), getY(),
+                  getOriginX(), getOriginY(),
+                  getWidth(), getHeight(),
+                  getScaleX(), getScaleY(),
+                  getRotation(),
+                  0, 0,
+                  (int) largura, (int) altura,
+                  false, false
+          );
       }
 }
