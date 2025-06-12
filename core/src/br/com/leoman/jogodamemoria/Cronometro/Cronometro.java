@@ -19,6 +19,7 @@ public class Cronometro {
         this.ativo = true;
         this.fonte = fonte;
     }
+
     public void atualizar(float deltaTime) {
         if(ativo){
             tempoRestante -= deltaTime;
@@ -28,29 +29,33 @@ public class Cronometro {
             }
         }
     }
+
     public void desenhar(SpriteBatch batch) {
         String tempoFormatado = String.format(formatoTempo, tempoRestante);
         batch.begin();
         fonte.draw(batch,tempoFormatado, Gdx.graphics.getWidth() - 100, Gdx.graphics.getHeight() - 50);
         batch.end();
     }
+
     public void iniciar(){
         if(!ativo){
             tempoRestante = tempoMaximo;
             ativo = true;
         }
     }
+
     public void pausar(){
         ativo = false;
     }
+
     public void reiniciar(){
         tempoRestante = tempoMaximo;
         ativo = true;
     }
+
     public float getTempoRestante() {
         return tempoRestante;
     }
-
 
     public boolean isTempoEsgotado() {
         return !ativo;

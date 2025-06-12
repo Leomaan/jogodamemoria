@@ -10,10 +10,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
-
 
 public class JogoDaMemoria extends Game {
 	SpriteBatch batch;
@@ -37,8 +35,6 @@ public class JogoDaMemoria extends Game {
 		cartasIguais = new ArrayList<Carta>();
 		criarCartas();
 	}
-
-
 
 	private BitmapFont criarTexto(int tamanho, Color cor) {
 		BitmapFont fonte;
@@ -111,7 +107,6 @@ public class JogoDaMemoria extends Game {
 			}
 			cartasIguais.clear();
 		}
-
 	}
 	private void compararCartas(ArrayList<Carta> cartasViradas) {
 		if(cartasViradas.size() == 2){
@@ -122,7 +117,6 @@ public class JogoDaMemoria extends Game {
 				cartasIguais.add(carta2);
 				contador = tempoVirada;
 				cartasViradas.clear();
-
 			}
 		}
 	}
@@ -131,7 +125,5 @@ public class JogoDaMemoria extends Game {
 			contador -= Gdx.graphics.getDeltaTime();
 		}
 	}
-
-
 }
 
