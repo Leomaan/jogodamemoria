@@ -18,11 +18,9 @@ public class CartaSom implements CartaDecorator{
     public void executar() {
         som = Gdx.audio.newSound(Gdx.files.internal("flip.wav"));
         som.play();
-
     }
 
     @Override
     public void draw(Batch batch, float delta) {
-
     }
 }
