@@ -1,6 +1,6 @@
 package br.com.leoman.jogodamemoria;
 
-import Telas.MenuScreen;
+import br.com.leoman.jogodamemoria.Telas.MenuScreen;
 import com.badlogic.gdx.Game;
 
 public class JogoDaMemoria extends Game {

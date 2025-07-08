@@ -1,5 +1,6 @@
-package Telas;
+package br.com.leoman.jogodamemoria.Telas;
 
+import br.com.leoman.jogodamemoria.AbstractFactory.Nivel;
 import br.com.leoman.jogodamemoria.JogoDaMemoria;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -30,16 +31,15 @@ public class MenuScreen implements Screen {
         TextButton buttonJogar = new TextButton("Jogar", skin);
         TextButton buttonSair = new TextButton("Sair", skin);
 
-        table.add(buttonJogar).pad(10).row();
-        table.add(buttonSair).pad(10).row();
+        table.add(buttonJogar).width(100).height(50).pad(10).row();
+        table.add(buttonSair).width(100).height(50).pad(10).row();
 
         buttonJogar.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new JogoScreen(game));
+                game.setScreen(new JogoScreen(game, Nivel.FACIL));
             }
         });
-
 
         buttonSair.addListener(new ClickListener() {
             @Override
@@ -47,7 +47,6 @@ public class MenuScreen implements Screen {
                 Gdx.app.exit();
             }
         });
-
     }
 
     @Override

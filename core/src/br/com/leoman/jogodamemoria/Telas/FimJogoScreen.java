@@ -1,4 +1,4 @@
-package Telas;
+package br.com.leoman.jogodamemoria.Telas;
 
 import br.com.leoman.jogodamemoria.JogoDaMemoria;
 import com.badlogic.gdx.Gdx;
