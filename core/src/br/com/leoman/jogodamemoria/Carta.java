@@ -1,6 +1,6 @@
 package br.com.leoman.jogodamemoria;
 
-import Telas.JogoScreen;
+import br.com.leoman.jogodamemoria.Telas.JogoScreen;
 import br.com.leoman.jogodamemoria.Decorator.CartaAnimacao;
 import br.com.leoman.jogodamemoria.Decorator.CartaDecorator;
 import br.com.leoman.jogodamemoria.Decorator.CartaSom;
@@ -21,10 +21,12 @@ public class Carta extends Actor {
    float largura = 190;
    float altura = 255;
    Carta cartaAtual;
+   public int numero;
 
-   public Carta (int numCarta, float x , float y, JogoScreen jogo){
+   public Carta (int numCarta, String verso, float x , float y, JogoScreen jogo){
+       this.numero = numCarta;
        texturaFrente = new Texture(Gdx.files.internal("carta"+numCarta+".png"));
-       texturaVerso = new Texture(Gdx.files.internal("verso.png"));
+       texturaVerso = new Texture(Gdx.files.internal(verso));
       this.x = x;
       this.y = y;
       cartaAtual = this;
