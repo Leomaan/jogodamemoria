@@ -1,7 +1,7 @@
-package br.com.leoman.jogodamemoria.AbstractFactory;
+package br.com.leoman.jogodamemoria.DesignPatterns.AbstractFactory;
 
 import br.com.leoman.jogodamemoria.Carta;
-import br.com.leoman.jogodamemoria.Cronometro.Cronometro;
+import br.com.leoman.jogodamemoria.Utils.Cronometro;
 import br.com.leoman.jogodamemoria.Telas.JogoScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -10,11 +10,11 @@ import java.util.Collections;
 
 public class AleatorioFactory implements NivelFactory {
 
-    private String caminhoVerso = "assets/versoFinal.png";
+    private final String caminhoVerso = "assets/versoFinal.png";
 
     @Override
     public Cronometro criarCronometro(BitmapFont fonte) {
-        return new Cronometro(90f, fonte);
+        return new Cronometro(60f, fonte);
     }
 
     @Override
@@ -23,6 +23,7 @@ public class AleatorioFactory implements NivelFactory {
     }
 
     private ArrayList<Carta> criarCartasBase(JogoScreen jogo) {
+
         ArrayList<Integer> numerosSelecionados = new ArrayList<>();
 
         ArrayList<Integer> tema1 = new ArrayList<>();

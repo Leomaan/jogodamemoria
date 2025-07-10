@@ -1,4 +1,4 @@
-package br.com.leoman.jogodamemoria.AbstractFactory;
+package br.com.leoman.jogodamemoria.DesignPatterns.AbstractFactory;
 
 public class Factory {
     public static NivelFactory criarFactory(Nivel nivel) {
