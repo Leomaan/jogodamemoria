@@ -45,4 +45,69 @@ Interface para aplicar **efeitos visuais e sonoros** nas cartas ao serem clicada
 
 2. **Clone o repositório**
    ```bash
-   git clone https://github.com/Leomaan/jogodamemoria.git
+   git clone https://github.com/seu-usuario/jogo-da-memoria-libgdx.git
+   ```
+
+3. **Execute com Gradle**
+   ```bash
+   ./gradlew desktop:run
+   ```
+
+   Ou no Windows:
+
+   ```cmd
+   gradlew.bat desktop:run
+   ```
+
+4. **(Opcional) Exportar como `.jar`**
+   Para exportar o jogo como um arquivo executável `.jar`, use:
+   ```bash
+   ./gradlew desktop:dist
+   ```
+
+   O arquivo será gerado em:  
+   `desktop/build/libs/`
+
+---
+
+## 🧠 Padrões de Projeto Utilizados
+
+- **Abstract Factory:**  
+  Usado para encapsular a criação de cartas e cronômetro em cada nível (`FacilFactory`, `MedioFactory`, etc).
+
+- **Decorator:**  
+  Adiciona funcionalidades como som e animação à carta clicada, sem modificar a classe original.
+
+---
+
+## 📁 Assets
+
+- Imagens das cartas: `assets/cartaX.png`
+- Verso das cartas: `assets/verso.png`
+- Fonte: `assets/ARIALBD.TTF`
+- Skin UI: `assets/uiskin.json`
+- Título do jogo: `assets/titulo.png`
+- Sons: `assets/som.mp3`, etc.
+
+> Certifique-se de que todos os arquivos estão corretamente posicionados dentro da pasta `assets/`.
+
+---
+
+## 📸 Screenshots
+
+*(Adicione imagens aqui, como o menu, cartas viradas, animações, etc.)*
+
+---
+
+## 📃 Licença
+
+Este projeto é livre para fins educacionais. Personalize como desejar!
+
+---
+
+## 👨‍💻 Autores
+
+- **Leoman Cássio**  
+- **Cauane Galdino**
+
+---
