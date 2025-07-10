@@ -105,7 +105,7 @@ Interface para aplicar **efeitos visuais e sonoros** nas cartas ao serem clicada
 
 ### 🏁 Tela de Fim de Jogo (Vitória)
 
-![Fim de Jogo - Vitória](assets/readme/finalganhou.png.png)
+![Fim de Jogo - Vitória](assets/readme/finalganhou.png)
 
 ### 💥 Tela de Fim de Jogo (Derrota)
 
