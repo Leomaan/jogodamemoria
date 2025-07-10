@@ -87,9 +87,8 @@ Interface para aplicar **efeitos visuais e sonoros** nas cartas ao serem clicada
 - Fonte: `assets/ARIALBD.TTF`
 - Skin UI: `assets/uiskin.json`
 - Título do jogo: `assets/titulo.png`
-- Sons: `assets/som.mp3`, etc.
+- Sons: `assets/flip.wav`, etc.
 
-> Certifique-se de que todos os arquivos estão corretamente posicionados dentro da pasta `assets/`.
 
 ---
 
