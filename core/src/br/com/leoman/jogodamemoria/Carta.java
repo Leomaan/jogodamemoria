@@ -1,9 +1,9 @@
 package br.com.leoman.jogodamemoria;
 
 import br.com.leoman.jogodamemoria.Telas.JogoScreen;
-import br.com.leoman.jogodamemoria.Decorator.CartaAnimacao;
-import br.com.leoman.jogodamemoria.Decorator.CartaDecorator;
-import br.com.leoman.jogodamemoria.Decorator.CartaSom;
+import br.com.leoman.jogodamemoria.DesignPatterns.Decorator.CartaAnimacao;
+import br.com.leoman.jogodamemoria.DesignPatterns.Decorator.CartaDecorator;
+import br.com.leoman.jogodamemoria.DesignPatterns.Decorator.CartaSom;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -32,30 +32,29 @@ public class Carta extends Actor {
       cartaAtual = this;
       setBounds(x, y, largura, altura);
 
-      addListener(new InputListener(){
-         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
-            virada = !virada;
-            ArrayList<Carta> cartasViradas = jogo.cartasViradas;
-            if(cartasViradas.size() <2){
+       addListener(new InputListener(){
+           public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
+               ArrayList<Carta> cartasViradas = jogo.cartasViradas;
+               if (virada) {
+                   return true;
+               }
+
+               if (cartasViradas.size() >= 2) {
+                   jogo.virarCartas();
+                   cartasViradas.clear();
+               }
+
                virada = true;
-               jogo.cartasViradas.add(cartaAtual);
+               cartasViradas.add(cartaAtual);
+
                CartaDecorator som = new CartaSom(cartaAtual);
                som.executar();
                CartaDecorator animacao = new CartaAnimacao(cartaAtual);
                animacao.executar();
 
-            }else if(cartasViradas.size() >=2){
-                   jogo.virarCartas();
-                   virada = true;
-                   jogo.cartasViradas.add(cartaAtual);
-                  CartaDecorator som = new CartaSom(cartaAtual);
-                  som.executar();
-                  CartaDecorator animacao = new CartaAnimacao(cartaAtual);
-                  animacao.executar();
-            }
-            return super.touchDown(event, x, y, pointer, button);
-         }
-      });
+               return true;
+           }
+       });
    }
 
       public void draw(Batch batch, float parentAlpha) {
