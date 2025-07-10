@@ -1,10 +1,10 @@
 package br.com.leoman.jogodamemoria.Telas;
 
 import br.com.leoman.jogodamemoria.*;
-import br.com.leoman.jogodamemoria.AbstractFactory.Factory;
-import br.com.leoman.jogodamemoria.AbstractFactory.Nivel;
-import br.com.leoman.jogodamemoria.AbstractFactory.NivelFactory;
-import br.com.leoman.jogodamemoria.Cronometro.Cronometro;
+import br.com.leoman.jogodamemoria.DesignPatterns.AbstractFactory.Factory;
+import br.com.leoman.jogodamemoria.DesignPatterns.AbstractFactory.Nivel;
+import br.com.leoman.jogodamemoria.DesignPatterns.AbstractFactory.NivelFactory;
+import br.com.leoman.jogodamemoria.Utils.Cronometro;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -23,7 +23,6 @@ public class JogoScreen implements Screen {
     BitmapFont fonteTexto;
     public ArrayList<Carta> cartasViradas;
     ArrayList<Carta> cartasIguais;
-    ArrayList<Carta> cartasDiferentes;
     float tempoVirada = 0.5f;
     float contador = 0f;
     Cronometro cronometro;
@@ -54,7 +53,7 @@ public class JogoScreen implements Screen {
         }
     }
 
-    private BitmapFont criarTexto(int tamanho, Color cor) {
+    public BitmapFont criarTexto(int tamanho, Color cor) {
         BitmapFont fonte;
         FreeTypeFontGenerator gerador = new FreeTypeFontGenerator(Gdx.files.internal("ARIALBD.TTF"));
         FreeTypeFontGenerator.FreeTypeFontParameter parametros = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -67,7 +66,7 @@ public class JogoScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0.8f, 0.8f, 0.8f, 0.8f);
+        ScreenUtils.clear(0.8588f, 0.8196f, 0.3215f, 1f);
 
         stage.act(delta);
         stage.draw();

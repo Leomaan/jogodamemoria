@@ -1,27 +1,17 @@
-package br.com.leoman.jogodamemoria.AbstractFactory;
+package br.com.leoman.jogodamemoria.Utils;
 
-import br.com.leoman.jogodamemoria.Telas.JogoScreen;
 import br.com.leoman.jogodamemoria.Carta;
-import br.com.leoman.jogodamemoria.Cronometro.Cronometro;
+import br.com.leoman.jogodamemoria.Telas.JogoScreen;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FacilFactory implements NivelFactory {
-    private String caminhoVerso = "assets/versoFacil.png";
+public class GeradorCartas {
 
-    public Cronometro criarCronometro(BitmapFont fonte) {
-        return new Cronometro(30f, fonte);
-    }
-
-    public ArrayList<Carta> criarCartas(JogoScreen jogo) {
-        return criarCartasBase(jogo);
-    }
-
-    private ArrayList<Carta> criarCartasBase(JogoScreen jogo) {
+    public static ArrayList<Carta> criarCartas(int inicioNumero, int fimNumero, int maxColunas, float larguraCarta, float alturaCarta, String caminhoVerso, JogoScreen jogo) {
         ArrayList<Integer> numeros = new ArrayList<>();
-        for (int i = 1; i <=1; i++) {
+        for (int i = inicioNumero; i <= fimNumero; i++) {
             numeros.add(i);
             numeros.add(i);
         }
@@ -30,11 +20,8 @@ public class FacilFactory implements NivelFactory {
         ArrayList<Carta> cartas = new ArrayList<>();
 
         int totalCartas = numeros.size();
-        int colunas = Math.min(4, totalCartas);
+        int colunas = Math.min(maxColunas, totalCartas);
         int linhas = (int) Math.ceil((float) totalCartas / colunas);
-
-        float larguraCarta = 190;
-        float alturaCarta = 255;
 
         float larguraTela = Gdx.graphics.getWidth();
         float alturaTela = Gdx.graphics.getHeight();
@@ -47,9 +34,13 @@ public class FacilFactory implements NivelFactory {
             int linha = i / colunas;
             float x = espacamentoX + coluna * (larguraCarta + espacamentoX);
             float y = alturaTela - ((linha + 1) * (alturaCarta + espacamentoY));
-            cartas.add(new Carta(numeros.get(i),caminhoVerso, x, y, jogo));
+
+            Carta carta = new Carta(numeros.get(i), caminhoVerso, x, y, jogo);
+            carta.setSize(larguraCarta, alturaCarta);
+            cartas.add(carta);
         }
 
         return cartas;
     }
 }
+

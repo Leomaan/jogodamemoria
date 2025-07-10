@@ -3,6 +3,7 @@ package br.com.leoman.jogodamemoria;
 import br.com.leoman.jogodamemoria.Telas.MenuScreen;
 import com.badlogic.gdx.Game;
 
+
 public class JogoDaMemoria extends Game {
 	@Override
 	public void create() {
