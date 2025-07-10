@@ -8,8 +8,9 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Jogo da Memoria");
-		config.setWindowedMode(1320, 700);
+		config.setWindowedMode(1600, 900);
 		config.setResizable(false);
 		new Lwjgl3Application(new JogoDaMemoria(), config);
+
 	}
 }

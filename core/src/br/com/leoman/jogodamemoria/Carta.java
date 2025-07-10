@@ -1,28 +1,65 @@
-   package br.com.leoman.jogodamemoria;
+package br.com.leoman.jogodamemoria;
 
+import br.com.leoman.jogodamemoria.Telas.JogoScreen;
+import br.com.leoman.jogodamemoria.DesignPatterns.Decorator.CartaAnimacao;
+import br.com.leoman.jogodamemoria.DesignPatterns.Decorator.CartaDecorator;
+import br.com.leoman.jogodamemoria.DesignPatterns.Decorator.CartaSom;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import java.util.ArrayList;
 
-   import com.badlogic.gdx.graphics.Texture;
-   import com.badlogic.gdx.graphics.g2d.Batch;
-   import com.badlogic.gdx.scenes.scene2d.Actor;
+public class Carta extends Actor {
+   public Texture texturaFrente;
+   Texture texturaVerso;
+   public boolean virada = false;
+   float x;
+   float y;
+   float largura = 190;
+   float altura = 255;
+   Carta cartaAtual;
+   public int numero;
 
-   public class Carta extends Actor {
-      Texture textureFrente;
-      Texture textureVerso;
-      boolean virada = false;
-      float x;
-      float y;
-      float altura = 255;
-      float largura = 190;
+   public Carta (int numCarta, String verso, float x , float y, JogoScreen jogo){
+       this.numero = numCarta;
+       texturaFrente = new Texture(Gdx.files.internal("carta"+numCarta+".png"));
+       texturaVerso = new Texture(Gdx.files.internal(verso));
+      this.x = x;
+      this.y = y;
+      cartaAtual = this;
+      setBounds(x, y, largura, altura);
 
-      public Carta(int numCarta, float x, float y){
-         textureFrente = new Texture("carta"+numCarta+".png");
-         textureVerso = new Texture("verso.png");
+       addListener(new InputListener(){
+           public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
+               ArrayList<Carta> cartasViradas = jogo.cartasViradas;
+               if (virada) {
+                   return true;
+               }
 
-         this.x = x;
-         this.y = y;
-         setBounds(x,y,largura,altura);
-      }
-      public void draw(Batch batch, float delta){
-         batch.draw(!virada ? textureVerso : textureFrente,x,y,largura,altura);
-      }
+               if (cartasViradas.size() >= 2) {
+                   jogo.virarCartas();
+                   cartasViradas.clear();
+               }
+
+               virada = true;
+               cartasViradas.add(cartaAtual);
+
+               CartaDecorator som = new CartaSom(cartaAtual);
+               som.executar();
+               CartaDecorator animacao = new CartaAnimacao(cartaAtual);
+               animacao.executar();
+
+               return true;
+           }
+       });
    }
+
+      public void draw(Batch batch, float parentAlpha) {
+          Texture textura = virada ? texturaFrente : texturaVerso;
+          batch.draw(textura, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation(), 0, 0, (int) largura, (int) altura, false, false
+          );
+      }
+}
