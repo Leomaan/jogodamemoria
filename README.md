@@ -45,4 +45,4 @@ Interface para aplicar **efeitos visuais e sonoros** nas cartas ao serem clicada
 
 2. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/jogo-da-memoria-libgdx.git
+   git clone https://github.com/Leomaan/jogodamemoria.git
