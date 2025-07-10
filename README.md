@@ -95,7 +95,21 @@ Interface para aplicar **efeitos visuais e sonoros** nas cartas ao serem clicada
 
 ## 📸 Screenshots
 
-*(Adicione imagens aqui, como o menu, cartas viradas, animações, etc.)*
+### 🏠 Menu Principal
+
+![Menu Principal](assets/readme/menu.png)
+
+### 🎴 Fase Inicial
+
+![Fase Inicial](assets/readme/primeirafase.png)
+
+### 🏁 Tela de Fim de Jogo (Vitória)
+
+![Fim de Jogo - Vitória](assets/readme/finalganhou.png.png)
+
+### 💥 Tela de Fim de Jogo (Derrota)
+
+![Fim de Jogo - Derrota](assets//readme/perdeu.png)
 
 ---
 
